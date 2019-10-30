@@ -29,6 +29,7 @@ $ ./a.out
 %}
 
 /* Definições de Nomes */
+STRING {"][_a-zA-Z0-9/-]+["]
 NUMEROS [0-9]+
 IDENTIFICADOR   [_a-zA-Z][_a-zA-Z0-9]* 
 OPERADOR_MATEMATICO "+"|"-"|"*"|"/"|"%"
@@ -48,6 +49,7 @@ PALAVRA_RESERVADA "int"|"float"|"double"|"boolean"|"true"|"false"|"if"|"do"|"whi
         padrão  ação
 
     */
+{STRING}                {printf("<string, %s>", yytext);}
 {NUMEROS}               {printf("<number, %s>", yytext);}
 {IDENTIFICADOR}         {printf("<identificador, %s>", yytext); contador++;}
 {OPERADOR_MATEMATICO}   {printf("<op_mat, %s>", yytext); contador++;}
